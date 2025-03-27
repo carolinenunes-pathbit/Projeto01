@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/client.css">
+    <title>Área do Cliente</title>
+</head>
+<body>
+    <div id = "header">
+        <button id="profileBtn">👤 <span id="nameDisplay"></span></button>
+        <button id="logoutBtn">Sair</button>
+    </div>
+
+    <h1>Bem-vindo Cliente!</h1>
+
+    <!-- Modal de Criar Pedido -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <h2>Criar Pedido</h2>
+            <form id="createOrderForm">
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" required>
+
+                <label for="address">Endereço:</label>
+                <input type="text" id="address" readonly>
+
+                <label for="houseNumber">Número da Casa:</label>
+                <input type="text" id="houseNumber" required>
+
+                <div class="product-entry">
+                    
+                    <label for="product-select">Produto:</label>
+                    <select id="product-select" class="product-select" required>
+                        <!-- Produtos carregados -->
+                    </select>
+
+                    <label for="quantity-input">Quantidade:</label>
+                    <input type="number" id="quantity-input" class="quantity-input" required>
+
+                    <button type="button" id="addProductBtn">Adicionar Produto</button><br><br>
+
+                </div>
+
+                    <button type="submit" id="submitOrderBtn">Criar Pedido</button>
+                    <button type="button" id="cancelOrder">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <button id="createOrderBtn">Criar Pedido</button>
+    <h2>Meus Pedidos</h2>
+    <div id="ordersList">
+        <!-- Pedidos listados -->
+    </div>
+
+    <script type="module" src="js/client.js"></script>
+
+</body>
+</html>

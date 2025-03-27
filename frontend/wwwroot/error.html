@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Erro de Autorização</title>
+</head>
+<body>
+    <div class="errorContainer">
+        <h1>Você não está autenticado!</h1>
+        <p>Clique para voltar para a página de login</p>
+        <button id="loginBtn">Fazer login</button>
+    </div>
+
+    <script>
+        document.getElementById("loginBtn").addEventListener("click", () => {
+            window.location.href = "/index.html";
+        });
+    </script>
+</body>
+</html>

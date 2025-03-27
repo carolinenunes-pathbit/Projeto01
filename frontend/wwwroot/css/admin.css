@@ -1,0 +1,267 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1c2028;
+    font-size: 16px;
+    color: white;
+}
+
+h1, h2 {
+    color: #abbddf;
+    text-align: center;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1%;
+}
+
+#profileBtn, #logoutBtn {
+    padding: 10px 20px;
+    background-color: #f0d0b2;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#profileBtn:hover, #logoutBtn:hover {
+    background-color: #d6b18e;
+}
+
+#logoutBtn {
+    margin-left: auto;
+}
+
+#addProduct {
+    padding: 8px 25px;
+    background-color: #f0d0b2;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 200px;
+    margin: 20px auto;
+    display: block;
+}
+
+#addProduct:hover {
+    background-color: #d6b18e;
+}
+
+#productSearchWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#productSearch {
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 70%;
+    max-width: 400px;
+    border-radius: 9px;
+    border: 2px solid #d2c3b5;
+    margin-bottom: 5px;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #2a2f38;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #2a2f38;
+    color: #abbddf;
+}
+
+td {
+    background-color: #333a44;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #3d454f;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f0d0b2;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #d6b18e;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: #1c2028;
+    padding: 20px;
+    margin: 10% auto;
+    width: 40%;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+#productForm input {
+    padding: 12px;
+    border-radius: 9px;
+    border: 2px solid #d2c3b5;
+    font-size: 14px;
+    width: calc(100% - 24px);
+    margin: 10px 0 10px 0;
+}
+
+#productForm button {
+    padding: 10px 25px;
+    background-color: #f0d0b2;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+#productForm button:hover {
+    background-color: #d6b18e;
+}
+
+.cancelBtn {
+    background-color: #e74c3c;
+}
+
+.cancelBtn:hover {
+    background-color: #c0392b;
+}
+
+#orderListBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 25px;
+    background-color: #f0d0b2;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 200px;
+}
+
+#orderListBtn:hover {
+    background-color: #d6b18e;
+}
+
+#orderSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#orderListTable {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #2a2f38;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#closeOrderSectionWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+#closeOrderSection {
+    padding: 10px 25px;
+    background-color: #f0d0b2;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 150px;
+}
+
+#closeOrderSection:hover {
+    background-color: #d6b18e;
+}
+
+select, input[type="text"], input[type="number"] {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 9px;
+    border: 2px solid #d2c3b5;
+    width: calc(100% - 24px);
+    margin: 10px 0;
+}
+
+#orderListTable td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#orderListTable ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#orderListTable ul li {
+    margin-bottom: 10px;
+}
+
+#orderListTable th, #orderListTable td {
+    padding: 12px;
+}
+
+#orderListTable th {
+    background-color: #2a2f38;
+    color: #abbddf;
+}
+
+#orderListTable td {
+    background-color: #333a44;
+    color: white;
+}
+
+#orderListTable tr:nth-child(even) {
+    background-color: #3d454f;
+}

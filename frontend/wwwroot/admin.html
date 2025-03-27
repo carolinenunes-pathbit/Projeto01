@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div id = "header">
+            <button id="profileBtn">👤 <span id="nameDisplay"></span></button>
+            <button id="logoutBtn">Sair</button>
+        </div>
+
+        <h1>Bem-vindo Administrador!</h1>
+    </header>
+    
+    <section id="productSection">
+        <!-- Barra de busca e botão 'Adicionar Produto' -->
+        <div id="productSearchWrapper">
+            <input id="productSearch" type="text" placeholder="Buscar produto">
+            <button id="addProduct">Adicionar Produto</button>
+        </div>
+        
+        <!-- Tabela de Produtos -->
+        <table id="productList">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade em Estoque</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Produtos inseridos -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Modal para adicionar ou editar produto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Adicionar Produto</h2>
+            <form id="productForm">
+                <input type="hidden" id="id">
+                
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName">
+                
+                <label for="price">Preço:</label>
+                <input type="number" id="price" step="0.01">
+
+                <label for="quantityAvaliable">Quantidade em Estoque:</label>
+                <input type="number" id="quantityAvaliable">
+                
+                <button type="submit" class="updateProduct">Salvar</button>
+                <button type="button" class="cancelBtn">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Seção lista de pedidos -->
+    <button id="orderListBtn">Pedidos</button>
+    <section id="orderSection" style="display: none;">
+        <h2>Lista de Pedidos</h2>
+        <table id="orderListTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Produtos</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Pedidos inseridos -->
+            </tbody>
+        </table>
+        <button id="closeOrderSection">Fechar</button>
+    </section>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

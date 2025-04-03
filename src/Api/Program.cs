@@ -119,7 +119,6 @@ else
 
 var app = builder.Build();
 
-// Use CORS middleware
 app.UseCors("AllowSpecificOrigins");
 
 // Configuração do pipeline de requisições
@@ -131,7 +130,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 
-// Coloque UseAuthentication antes de UseAuthorization
 app.UseAuthentication();
 app.UseAuthorization();
 

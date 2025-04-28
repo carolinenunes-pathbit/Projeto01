@@ -1,11 +1,13 @@
 # Projeto01
 
 ## Descrição
-O Projeto01 é uma aplicação que fornece uma interface para clientes gerenciarem seus pedidos. A aplicação permite que os usuários criem pedidos, visualizem seus pedidos existentes e interajam com a interface de forma intuitiva.
+Este projeto é uma aplicação que fornece uma interface para clientes gerenciarem seus pedidos. A aplicação permite que os usuários criem pedidos, visualizem seus pedidos existentes e interajam com a interface de forma intuitiva.
 
 ## Funcionalidades
-- Área do Cliente: Os usuários podem criar novos pedidos e visualizar seus pedidos existentes.
-- Formulário de Criar Pedido: Os usuários podem inserir informações como CEP, endereço, número da casa, selecionar produtos e especificar quantidades.
+- Área do Administrador: O administrador pode cadastrar produtos e atualizar o status dos pedidos dos clientes.
+- Formulário de Criar Produto: O administrador insere informações como nome, preço e quantidade em estoque para os produtos.
+- Área do Cliente: Os clientes podem criar novos pedidos e visualizar seus pedidos existentes.
+- Formulário de Criar Pedido: Os clientes podem inserir informações como CEP, endereço, número da casa, selecionar produtos e especificar quantidades.
 - Interface Responsiva: A aplicação é projetada para ser responsiva e funcionar em diferentes dispositivos.
 
 ## Instalação
@@ -16,12 +18,7 @@ Para instalar e executar o projeto, siga os passos abaixo:
    git clone https://github.com/caroline-nunes-pathbit/Projeto01.git
    ```
 
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd Projeto01
-   ```
-
-3. Construa e inicie os containers usando Docker:
+2. Construa e inicie os containers usando Docker:
    ```bash
    docker-compose up --build
    ```

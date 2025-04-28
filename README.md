@@ -1,4 +1,4 @@
-# Projeto01
+# Gerenciador de Produtos e Pedidos
 
 ## Descrição
 Este projeto é uma aplicação que fornece uma interface para clientes gerenciarem seus pedidos. A aplicação permite que os usuários criem pedidos, visualizem seus pedidos existentes e interajam com a interface de forma intuitiva.

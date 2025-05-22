@@ -5,7 +5,7 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
     serverOptions.ConfigureEndpointDefaults(lo => lo.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1);
 });
 
-builder.WebHost.UseUrls("http://0.0.0.0:3000");
+builder.WebHost.UseUrls("http://0.0.0.0:9090");
 
 // Adiciona serviços ao container
 builder.Services.AddRazorPages();

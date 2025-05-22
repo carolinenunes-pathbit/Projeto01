@@ -1,6 +1,4 @@
-const URL_BASE = window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "http://api:5000";
+const URL_BASE = "http://localhost:8080";
 
 document.addEventListener("DOMContentLoaded", async () => {
     function isAuthenticated(){

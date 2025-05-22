@@ -16,32 +16,33 @@ Para instalar e executar o projeto, siga os passos abaixo:
 1. Clone o repositório:
    ```bash
    git clone https://github.com/caroline-nunes-pathbit/Projeto01.git
+   cd Projeto01
    ```
 
 2. Construa e inicie os containers usando Docker:
    ```bash
-   docker-compose up --build
+   docker-compose up -d --build
    ```
 
 ## Uso
-Após iniciar a aplicação, acesse `http://localhost:3000` em seu navegador. Você verá a área do cliente onde poderá criar pedidos e visualizar seus pedidos existentes (se possuir).
+Após iniciar a aplicação, acesse `http://localhost:9090` em seu navegador. Você verá a área do cliente onde poderá criar pedidos e visualizar seus pedidos existentes (se possuir).
 
 ## Funcionalidades do Backend
-- **API de Clientes**: 
+- **Endpoint de Clientes**: 
   - Criação de clientes automaticamente ao cadastrar um usuário do tipo 'Cliente'.
   - Atualização do perfil do usuário.
 
-- **API de Pedidos**:
+- **Endpoint de Pedidos**:
   - Obtenção de endereço formatado a partir do CEP fornecido.
   - Obtenção de todos os pedidos de um cliente autenticado.
   - Criação de novos pedidos com validação de dados.
   - Obtenção de todos os pedidos de um administrador.
   - Atualização do status de um pedido por um administrador.
 
-- **API de Produtos**:
+- **Endpoint de Produtos**:
   - Criação de novos produtos por administradores.
 
-- **API de Usuários**:
+- **Endpoint de Usuários**:
   - Login de usuários com retorno de token JWT.
   - Cadastro de novos usuários.
   - Atualização das informações de usuários existentes.

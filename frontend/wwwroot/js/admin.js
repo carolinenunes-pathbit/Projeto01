@@ -1,6 +1,4 @@
-const URL_BASE = window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "http://api:5000";
+const URL_BASE = "http://localhost:8080";
 
 // Verifica se o usuário é um administrador e se está autenticado
 function isAdmin() {

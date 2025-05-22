@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins", policy =>
     {
-        policy.WithOrigins("http://localhost:3030")
+        policy.WithOrigins("http://localhost:9090")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
@@ -122,11 +122,12 @@ var app = builder.Build();
 app.UseCors("AllowSpecificOrigins");
 
 // Configuração do pipeline de requisições
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = "swagger";
+});
 
 app.UseRouting();
 

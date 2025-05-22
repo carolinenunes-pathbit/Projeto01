@@ -1,8 +1,5 @@
-import { userLogin } from "./login.js";
-const URL_BASE = window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "http://api:5000";
-     
+const URL_BASE = "http://localhost:8080";
+
 // Função de cadastro
 async function userRegister({ name, userName, userEmail, password, userType }) {
 

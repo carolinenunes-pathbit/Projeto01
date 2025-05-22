@@ -1,24 +1,26 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /frontend
 
-WORKDIR /build
+COPY ["frontend/frontend.csproj", "frontend/"]
 
-RUN ls -R /build
+WORKDIR "/frontend"
+RUN dotnet restore "frontend/frontend.csproj"
 
-COPY /frontend .
+COPY . .
 
-RUN dotnet restore
+RUN if [ -d "tests" ]; then rm -rf tests; fi
 
-RUN ls -R /build
+RUN dotnet publish "frontend/frontend.csproj" -c Release -o /app/publish \
+    --no-restore \
+    -p:EnvironmentName=Production
 
-RUN dotnet publish -c Release -o /build/publish
-
-# Final image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
-
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-COPY --from=base /build/publish .
+EXPOSE 9090
 
-EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:9090
 
-CMD ["dotnet", "Api.dll"]
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "frontend.dll"]

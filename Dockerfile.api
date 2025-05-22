@@ -1,36 +1,30 @@
-# Build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
-
-WORKDIR /build
-
-RUN ls -R /build
-
-COPY ./Projeto01.sln .
-
-# Copia apenas os arquivos .csproj de todas as pastas para restaurar dependências
-COPY ./src/Api/ ./src/Api/
-COPY ./src/Domain/ ./src/Domain/
-COPY ./src/Common/ ./src/Common/
-COPY ./src/Infrastructure/ ./src/Infrastructure/
-COPY ./src/Application/ ./src/Application/
-COPY ./tests/UnitTests/ ./tests/UnitTests/
-
-RUN ls -R /build
-
-RUN dotnet restore Projeto01.sln
-
-COPY ./src ./src
-COPY ./tests ./tests
-
-RUN dotnet publish -c Release -o /build/publish
-
-# Final image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
-
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-COPY --from=base /build/publish .
+COPY ["src/Api/Api.csproj", "src/Api/"]
+COPY ["src/Domain/Domain.csproj", "src/Domain/"]
+COPY ["src/Common/Common.csproj", "src/Common/"]
+COPY ["src/Infrastructure/Infrastructure.csproj", "src/Infrastructure/"]
+COPY ["src/Application/Application.csproj", "src/Application/"]
+
+WORKDIR /app/src/Api
+RUN dotnet restore "Api.csproj"
+
+COPY ["src/Api/", "/app/src/Api/"]
+COPY ["src/Domain/", "/app/src/Domain/"]
+COPY ["src/Common/", "/app/src/Common/"]
+COPY ["src/Infrastructure/", "/app/src/Infrastructure/"]
+COPY ["src/Application/", "/app/src/Application/"]
+
+WORKDIR /app/src/Api
+RUN dotnet publish "Api.csproj" -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
 
 EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:8080
 
-CMD ["dotnet", "Api.dll"]
+COPY --from=build /app/src/Api/out .
+
+ENTRYPOINT ["dotnet", "Api.dll"]

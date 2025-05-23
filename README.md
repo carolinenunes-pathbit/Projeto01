@@ -25,7 +25,7 @@ Para instalar e executar o projeto, siga os passos abaixo:
    ```
 
 ## Uso
-Após iniciar a aplicação, acesse `http://localhost:9090` em seu navegador. Você verá a área do cliente onde poderá criar pedidos e visualizar seus pedidos existentes (se possuir).
+Após iniciar a aplicação, acesse `http://localhost:9090` em seu navegador.
 
 ## Funcionalidades do Backend
 - **Endpoint de Clientes**: 

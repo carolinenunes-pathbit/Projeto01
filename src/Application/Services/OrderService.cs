@@ -123,15 +123,36 @@ namespace Application.Services
         // Função para buscar o endereço pelo CEP
         public async Task<string> GetAddressFromCEPAsync(string cep)
         {
-            var response = await _httpClient.GetAsync($"https://ceprapido.com.br/api/addresses/{cep}");
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                var response = await _httpClient.GetAsync($"https://ceprapido.com.br/api/addresses/{cep}");
+                response.EnsureSuccessStatusCode();
 
-            var content = await response.Content.ReadAsStringAsync();
-            var addressData = JsonConvert.DeserializeObject<List<dynamic>>(content);
-            var firstAddress = addressData[0];
+                var content = await response.Content.ReadAsStringAsync();
+                var addressData = JsonConvert.DeserializeObject<List<dynamic>>(content);
+                var firstAddress = addressData[0];
 
-            var formattedAddress = $"{firstAddress.addressName}, {firstAddress.districtName}, {firstAddress.cityName} - {firstAddress.stateCode}";
-            return formattedAddress;
+                var formattedAddress = $"{firstAddress.addressName}, {firstAddress.districtName}, {firstAddress.cityName} - {firstAddress.stateCode}";
+                return formattedAddress;
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    var response = await _httpClient.GetAsync($"https://opencep.com/v1/{cep}");
+                    response.EnsureSuccessStatusCode();
+
+                    var content = await response.Content.ReadAsStringAsync();
+                    var address = JsonConvert.DeserializeObject<dynamic>(content);
+
+                    var formattedAddress = $"{address.logradouro}, {address.bairro}, {address.localidade} - {address.uf}";
+                    return formattedAddress;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Erro ao buscar o endereço nas duas APIs. Detalhes: {ex.Message}");
+                }
+            }
         }
     }
 }

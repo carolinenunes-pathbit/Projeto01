@@ -32,10 +32,7 @@ namespace UnitTests.Application.Services
             _mockProductRepository = new Mock<IProductRepository>();
             _mockCustomerRepository = new Mock<ICustomerRepository>();
             _mockHttpMessageHandler = new Mock<HttpMessageHandler>();
-            _httpClient = new HttpClient(_mockHttpMessageHandler.Object)
-            {
-                BaseAddress = new Uri("https://ceprapido.com.br/api/")
-            };
+            _httpClient = new HttpClient(_mockHttpMessageHandler.Object);
 
             _orderService = new OrderService(
                 _mockOrderRepository.Object,
@@ -254,14 +251,23 @@ namespace UnitTests.Application.Services
             // Arrange
             var cep = "99999999";
 
-            _mockHttpMessageHandler.Protected().Setup<Task<HttpResponseMessage>>
-                ("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>()).ReturnsAsync(new HttpResponseMessage
+            _mockHttpMessageHandler.Protected()
+                .SetupSequence<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.NotFound
+                })
+                .ReturnsAsync(new HttpResponseMessage
                 {
                     StatusCode = HttpStatusCode.NotFound
                 });
 
-            // Act Assert
-            await Assert.ThrowsAsync<HttpRequestException>(() => _orderService.GetAddressFromCEPAsync(cep));
+            // Act & Assert
+            var ex = await Assert.ThrowsAsync<Exception>(() => _orderService.GetAddressFromCEPAsync(cep));
+            Assert.Contains("Erro ao buscar o endereço nas duas APIs", ex.Message);
         }
     }
 }
